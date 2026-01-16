@@ -95,37 +95,56 @@ function App() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(0,87,183,0.3),transparent_50%)]" />
         </div>
         
-        <div className="relative z-10 container mx-auto text-center">
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: heroInView ? 0 : 30, opacity: heroInView ? 1 : 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-          >
-            <h1 className="text-7xl md:text-9xl font-black text-ukraine-yellow mb-6 tracking-tighter drop-shadow-2xl">
-              ПОТУЖНО
-            </h1>
-            <p className="text-3xl md:text-5xl text-white mb-8 font-bold">
-              Лідерство в дії
-            </p>
-            <p className="text-xl md:text-2xl text-blue-100 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Володимир Зеленський - Президент України, що об'єднує націю в найважчі часи та надихає світ своєю мужністю та рішучістю
-            </p>
-          </motion.div>
+        <div className="relative z-10 container mx-auto">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            {/* Text Content */}
+            <motion.div
+              className="flex-1 text-center lg:text-left"
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: heroInView ? 0 : 30, opacity: heroInView ? 1 : 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+            >
+              <h1 className="text-7xl md:text-9xl font-black text-ukraine-yellow mb-6 tracking-tighter drop-shadow-2xl">
+                ПОТУЖНО
+              </h1>
+              <p className="text-3xl md:text-5xl text-white mb-8 font-bold">
+                Лідерство в дії
+              </p>
+              <p className="text-xl md:text-2xl text-blue-100 mb-12 max-w-3xl mx-auto lg:mx-0 leading-relaxed">
+                Володимир Зеленський - Президент України, що об'єднує націю в найважчі часи та надихає світ своєю мужністю та рішучістю
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <button onClick={(e) => smoothScroll(e, 'biography')} className="bg-ukraine-yellow hover:bg-yellow-500 text-ukraine-blue px-10 py-5 rounded-full text-lg font-black transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-2xl shadow-ukraine-yellow/50">
+                  Дізнатися більше
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+                <button onClick={(e) => smoothScroll(e, 'contact')} className="bg-white/10 hover:bg-white/20 text-white px-10 py-5 rounded-full text-lg font-black transition-all backdrop-blur-sm border-2 border-white/30">
+                  Зв'язатися
+                </button>
+              </div>
+            </motion.div>
 
-          <motion.div 
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: heroInView ? 0 : 20, opacity: heroInView ? 1 : 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-          >
-            <button onClick={(e) => smoothScroll(e, 'biography')} className="bg-ukraine-yellow hover:bg-yellow-500 text-ukraine-blue px-10 py-5 rounded-full text-lg font-black transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-2xl shadow-ukraine-yellow/50">
-              Дізнатися більше
-              <ChevronRight className="w-5 h-5" />
-            </button>
-            <button onClick={(e) => smoothScroll(e, 'contact')} className="bg-white/10 hover:bg-white/20 text-white px-10 py-5 rounded-full text-lg font-black transition-all backdrop-blur-sm border-2 border-white/30">
-              Зв'язатися
-            </button>
-          </motion.div>
+            {/* Photo */}
+            <motion.div
+              className="flex-1 max-w-md lg:max-w-lg"
+              initial={{ x: 30, opacity: 0 }}
+              animate={{ x: heroInView ? 0 : 30, opacity: heroInView ? 1 : 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+            >
+              <div className="relative">
+                <div className="absolute inset-0 bg-ukraine-yellow/20 rounded-3xl blur-3xl transform rotate-6"></div>
+                <img 
+                  src="https://images.unsplash.com/photo-1560807707-8cc77767d783?w=800&q=80" 
+                  alt="Володимир Зеленський" 
+                  className="relative rounded-3xl shadow-2xl border-4 border-ukraine-yellow/30 hover:border-ukraine-yellow/60 transition-all transform hover:scale-105"
+                />
+                <div className="absolute -bottom-6 -right-6 bg-ukraine-yellow text-ukraine-blue px-8 py-4 rounded-2xl font-black text-xl shadow-xl">
+                  Президент України
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </motion.section>
 
